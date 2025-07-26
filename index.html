@@ -6,7 +6,9 @@
     <title>Aura_Watch</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍥</text></svg>">
+
+  </head>
 <body>
     <!-- header -->
     <header>
@@ -31,9 +33,10 @@
       <Section class="home-view">
         <h2>Top Airing Anime</h2>
         <div id="Search-result" class="anime-grid"></div>
+        <button id="loadMore">Load More Anime</button>
       </Section>
       <!-- Search view -->
-    <section id="search-view" class="hidden">
+    <section id="search-view" class="hidden" style="display: none";>
       <h2>Search Results</h2>
       <div id="search-results" class="anime-grid">
         <!-- JS will inject results here -->
@@ -41,7 +44,7 @@
     </section>
 
     <!-- ANIME DETAIL VIEW -->
-    <section id="anime-detail-view" class="hidden">
+    <section id="anime-detail-view" class="hidden" style="display: none;"">
       <button id="back-btn">⬅️ Back</button>
       <h2 id="anime-title">Anime Title</h2>
       <img id="anime-cover" src="" alt="Anime Cover" />
@@ -49,7 +52,7 @@
       <div id="episode-list">
         <!-- JS will inject episode list -->
       </div>
-      <video id="anime-player" controls></video>
+      <iframe id="anime-player" controls style="display: none;"></iframe>
     </section>
     <!-- footer -->
       <footer>
