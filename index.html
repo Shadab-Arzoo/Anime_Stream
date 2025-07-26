@@ -3,9 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aura_Watch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    
+    <!-- header -->
+    <header>
+        <div class="header">
+            <img src="logo.png" alt="Logo" id="logo">
+            <div class="Header-tabs">
+            <a href="none" class="header-tab">Home</a>
+            <a href="none" class="header-tab">Genres</a>
+            <a href="none" class="header-tab">News</a>
+            <a href="none" class="header-tab">Community</a>
+            </div>
+            <input type="search" placeholder="  Search..." id="Search-Bar" ></input>
+            <button id="Search"><a><i class="fa-solid fa-magnifying-glass fa-fade"></i></a></button>
+            </div>
+        </div>
+    </header>
+    <!-- hero section -->
+     <div class="hero">
+        <div class="fade"></div>
+     </div>
+     <!-- Home view -->
+      <Section class="home-view">
+        <h2>Top Airing Anime</h2>
+        <div id="Search-result" class="anime-grid"></div>
+      </Section>
+      <!-- Search view -->
+    <section id="search-view" class="hidden">
+      <h2>Search Results</h2>
+      <div id="search-results" class="anime-grid">
+        <!-- JS will inject results here -->
+      </div>
+    </section>
+
+    <!-- ANIME DETAIL VIEW -->
+    <section id="anime-detail-view" class="hidden">
+      <button id="back-btn">⬅️ Back</button>
+      <h2 id="anime-title">Anime Title</h2>
+      <img id="anime-cover" src="" alt="Anime Cover" />
+      <p id="anime-description">Description here...</p>
+      <div id="episode-list">
+        <!-- JS will inject episode list -->
+      </div>
+      <video id="anime-player" controls></video>
+    </section>
+    <!-- footer -->
+      <footer>
+        <div class="footer">
+        <p id="thanks">Thanks for spending time with us here at AnimeVerse. Whether you're on your hundredth rewatch of your favorite shonen, 
+    or just discovering the magic of slice-of-life, we're honored to be a part of your anime journey.  
+    This site was built with passion, caffeine, and just a little too much emotional damage from character deaths.  
+    We’re not public (yet), but we’re growing, learning, and dreaming bigger every day — just like your favorite underdog hero.  
+    Stay curious, stay cozy, and remember: when in doubt, add it to your watchlist. 🍜✨ </p>
+    <div class="footer-divider"></div>
+    <div class="links">
+        <h3>Follow Us</h3>
+        <a href="null" id="social-media"><i class="fa-brands fa-square-instagram fa-spin"></i>Instagram</a>
+        <br>
+        <a href="null" id="social-media"><i class="fa-brands fa-square-x-twitter fa-spin"></i>X</a>
+        <br>
+        <a href="null" id="social-media"><i class="fa-brands fa-youtube fa-spin"></i>Youtube</a>
+        <br>   
+    </div>
+    </div>
+  </footer>
+      <p id="love">Made with 💖</p>
+     <script src="script.js"></script>
 </body>
 </html>
