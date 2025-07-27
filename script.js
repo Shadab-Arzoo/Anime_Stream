@@ -1,4 +1,6 @@
 const Search_More_Btn = document.getElementById("Search_More_Btn");
+const Genres_Section = document.getElementById("Genres_Section");
+const Genres = document.getElementById("Genres");
 const Search_Results = document.querySelector("#search-results")
 const detailsection = document.querySelector("#anime-detail-view");
 detailsection.style.display = "block";
@@ -127,4 +129,11 @@ const LightMode = document.getElementById("LightMode");
 LightMode.addEventListener("click",()=>{
     const Body = document.querySelector("body");
     Body.style.backgroundColor = "white";    
+})
+Genres.addEventListener("click",()=>{
+    Genres_Section.style.display = "block";
+    detailsection.style.display = "none";
+    document.querySelector(".hero").style.display = "none";
+    document.querySelector("#search-view").style.display = "none";
+    document.querySelector(".home-view").style.display = "none";
 })

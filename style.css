@@ -131,4 +131,6 @@ h2{
   padding: 10px;
   font-size: 1rem;
 }
-
+#Genres {
+  cursor: pointer;
+}
