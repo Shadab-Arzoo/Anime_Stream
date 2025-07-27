@@ -1,8 +1,9 @@
-let limit_Search = 7;
- const Search_Results = document.querySelector("#search-results")
+const Search_More_Btn = document.getElementById("Search_More_Btn");
+const Search_Results = document.querySelector("#search-results")
 const detailsection = document.querySelector("#anime-detail-view");
 detailsection.style.display = "block";
-let currentPage = 1;
+let HomePage = 1;
+let SearchPage = 1;
 const limit = 14;
 const loadMoreBtn = document.querySelector("#loadMore");
 const backbtn = document.querySelector("#back-btn")
@@ -11,7 +12,7 @@ const Animecall = async () =>{
     try {
     detailsection.style.display = "none";
     console.log("Fetching data");
-    const anime =  await fetch(`https://api.jikan.moe/v4/top/anime?page=${currentPage}&limit=${limit}`); 
+    const anime =  await fetch(`https://api.jikan.moe/v4/top/anime?page=${HomePage}&limit=${limit}`); 
     const data = await anime.json();
     const animeList = data.data;
     animeList.forEach(anime => {
@@ -32,7 +33,7 @@ const Animecall = async () =>{
 }
 Animecall();
 loadMoreBtn.addEventListener("click",()=>{
-    currentPage++
+    HomePage++
     Animecall();
 })
 function ShowAnimeDetails(anime){
@@ -87,19 +88,24 @@ backbtn.addEventListener("click",()=>{
 const Search_Bar = document.querySelector("#Search-Bar");
 const Search_btn = document.querySelector("#Search");
 Search_btn.addEventListener("click",()=>{
+SearchPage = 1;
 document.querySelector("#search-view").style.display = "block";
 document.querySelector(".hero").style.display = "none";
 document.querySelector(".home-view").style.display = "none";
 detailsection.style.display = "none";
-obj.innerHTML = "";
+Search_Results.innerHTML = "";
 search();
 })
 
 const search = async () => {
     const query = Search_Bar.value.trim();
-    const response = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}&limit=${limit_Search}`);
+    const response = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}&limit=7&page=${SearchPage}`);
     const data = await response.json();
     const result = data.data;
+    if (result.length === 0) {
+  Search_Results.innerHTML = "<p>No results found. Try a different anime name 👀</p>";
+  return;
+}
     console.log("Searching Resulttt");
     result.forEach(search=>{
     const Search_Card = document.createElement("div");
@@ -107,12 +113,18 @@ const search = async () => {
     Search_Card.innerHTML =  `<img src="${search.images.jpg.image_url}" alt="${search.title}">
         <h3>${search.title}</h3>
      `;   
+    Search_Card.addEventListener("click",()=>{
+    ShowAnimeDetails(search);
+    })
     Search_Results.appendChild(Search_Card);
     })
 }    
-const Search_More_Btn = document.createElement("button")
     Search_More_Btn.addEventListener("click",()=>{
-    limit_Search = limit_Search + limit_Search;
+    SearchPage++
     search();        
     })
-Search_Results.appendChild(Search_More_Btn);
+const LightMode = document.getElementById("LightMode");
+LightMode.addEventListener("click",()=>{
+    const Body = document.querySelector("body");
+    Body.style.backgroundColor = "white";    
+})
