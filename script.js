@@ -1,11 +1,17 @@
+const genreResultsContainer = document.createElement("div");
+genreResultsContainer.classList = "anime-grid";
+genreResultsContainer.id = "Genrecontainer"
+const Genre_moreBtn = document.querySelector("#Genre_moreBtn");
 const Search_More_Btn = document.getElementById("Search_More_Btn");
 const Genres_Section = document.getElementById("Genres_Section");
+Genres_Section.appendChild(genreResultsContainer);
 const Genres = document.getElementById("Genres");
 const Search_Results = document.querySelector("#search-results")
 const detailsection = document.querySelector("#anime-detail-view");
 detailsection.style.display = "block";
 let HomePage = 1;
 let SearchPage = 1;
+let GenrePage =1;
 const limit = 14;
 const loadMoreBtn = document.querySelector("#loadMore");
 const backbtn = document.querySelector("#back-btn")
@@ -39,10 +45,13 @@ loadMoreBtn.addEventListener("click",()=>{
     Animecall();
 })
 function ShowAnimeDetails(anime){
+    Genres_Section.style.display = "none";
     detailsection.style.display = "block";
     document.querySelector(".hero").style.display = "none";
     document.querySelector("#search-view").style.display = "none";
     document.querySelector(".home-view").style.display = "none";
+    document.querySelector("#Genrecontainer").style.display = "none";
+    document.querySelector("#Genre_moreBtn").style.display = "none";
     const anime_title = document.querySelector("#anime-title");
     const anime_cover = document.querySelector("#anime-cover");
     const anime_description = document.querySelector("#anime-description");
@@ -125,6 +134,12 @@ const search = async () => {
     SearchPage++
     search();        
     })
+Search_Bar.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    Search_btn.click();
+  }
+});
+
 const LightMode = document.getElementById("LightMode");
 LightMode.addEventListener("click",()=>{
     const Body = document.querySelector("body");
@@ -137,3 +152,36 @@ Genres.addEventListener("click",()=>{
     document.querySelector("#search-view").style.display = "none";
     document.querySelector(".home-view").style.display = "none";
 })
+const genre_btn = document.querySelectorAll(".genre-btn");
+genre_btn.forEach(button=>{
+button.addEventListener("click",()=>{
+    genreResultsContainer.innerHTML ="";
+Genre_moreBtn.style.display = "block";
+const Genres_Result = async () =>{
+    try {
+        const response = await fetch(`https://api.jikan.moe/v4/anime?genres=${button.dataset.genre}&limit=7&page=${GenrePage}`)
+        const data = await response.json();
+        const Genre_data = data.data;
+        Genre_data.forEach(Genres_Result_I => {
+        const Genre_Card = document.createElement("div");
+        Genre_Card.classList.add("anime-card");
+        Genre_Card.innerHTML = `<img src="${Genres_Result_I.images.jpg.image_url}" alt="${Genres_Result_I.title}">
+        <h3>${Genres_Result_I.title}</h3>
+     `;   
+    Genre_Card.addEventListener("click",()=>{
+    ShowAnimeDetails(Genres_Result_I);
+    })
+    genreResultsContainer.appendChild(Genre_Card);
+    })
+    } catch (error) {
+        console.log("Show it why wont u work")
+    }
+}
+Genres_Result();
+Genre_moreBtn.addEventListener("click",()=>{
+    GenrePage++;
+    Genres_Result();
+})
+})
+})
+
