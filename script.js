@@ -1,3 +1,5 @@
+const RandomBtn = document.getElementById("Random");
+const Home = document.querySelectorAll("#home, #logo");
 const genreResultsContainer = document.createElement("div");
 genreResultsContainer.classList = "anime-grid";
 genreResultsContainer.id = "Genrecontainer"
@@ -139,11 +141,20 @@ Search_Bar.addEventListener("keydown", (e) => {
     Search_btn.click();
   }
 });
-
+const Body = document.querySelector("body")
+let isLightMode = false;
+function ChangeMode(){
+    if(isLightMode == false){
+    Body.style.backgroundColor = "white";
+    isLightMode = true;
+    }else{
+    Body.style.backgroundColor = "black";
+    isLightMode = false;
+    }
+}
 const LightMode = document.getElementById("LightMode");
 LightMode.addEventListener("click",()=>{
-    const Body = document.querySelector("body");
-    Body.style.backgroundColor = "white";    
+  ChangeMode();
 })
 Genres.addEventListener("click",()=>{
     Genres_Section.style.display = "block";
@@ -184,4 +195,26 @@ Genre_moreBtn.addEventListener("click",()=>{
 })
 })
 })
-
+Home.forEach(search=>{
+search.addEventListener("click",()=>{
+    document.querySelector(".hero").style.display = "block";
+    document.querySelector(".home-view").style.display = "block";
+    detailsection.style.display = "none";
+    const video = document.querySelector(".video");
+    const anime_player = document.querySelector("#anime-player");
+    video.removeChild(anime_player);   
+})
+})
+RandomBtn.addEventListener("click",()=>{
+    const Random = async ()=>{
+        try {
+            response = await fetch(`https://api.jikan.moe/v4/random/anime`);
+            const data = await response.json();
+            const RandomAnime = data.data;
+            ShowAnimeDetails(RandomAnime);
+        } catch (error) {
+            console.log("Random didnt work")
+        }
+    }
+    Random();
+})

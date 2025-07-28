@@ -134,3 +134,12 @@ h2{
 #Genres {
   cursor: pointer;
 }
+#logo{
+      cursor: pointer;
+}
+#home{
+      cursor: pointer;
+}
+#Random{
+      cursor: pointer;
+}
