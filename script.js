@@ -218,3 +218,28 @@ RandomBtn.addEventListener("click",()=>{
     }
     Random();
 })
+
+const images = document.querySelectorAll(".hero img");
+let currentIndex = 0;
+
+function carousel(index) {
+  for (let i = 0; i < images.length; i++) {
+    if (i === index) {
+      images[i].style.display = "block";
+    } else {
+      images[i].style.display = "none";
+    }
+  }
+}
+
+carousel(currentIndex);
+
+document.getElementById("ForwBtn").addEventListener("click", function () {
+  currentIndex = (currentIndex + 1) % images.length;
+  carousel(currentIndex);
+});
+
+document.getElementById("PrevBtn").addEventListener("click", function () {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  carousel(currentIndex);
+});
