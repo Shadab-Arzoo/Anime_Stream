@@ -5,7 +5,7 @@
 .header{
     display: flex;
     justify-content: space-between;
-    background-color: #23252b;
+    background-color: #001d3d;
     height: 5em;
 }
 #logo{
@@ -21,9 +21,9 @@
 }
 .header-tab{
     color: white;
-    text-decoration: none;
 }
 #Search-Bar{
+    border-color: white;
     margin-left: 150px;
     margin-top: 20px;
     width: 30em;
@@ -31,9 +31,12 @@
     border-radius: 20px;
 }
 #Search{
+    border-color: white;
+    background-color: #003566;
+    color: white;
     margin-top: 20px;
-    width: 45px;
-    height: 45px;
+    width: 41px;
+    height: 41px;
     border-radius: 50%;
     margin-right: 40px;
 }
@@ -41,6 +44,10 @@
     transform: scale(1.2);
 }
 #LightMode{
+    color: white;
+    background-color: #003566;
+    border-color: white;
+    transition: all 0.2s ease-in-out 0.2s ;
     margin-right: 2vw;
     margin-top: 4vh;
     width: 2.5vw;
@@ -84,9 +91,11 @@
     width: 100vw;
 }
 .hero #ForwBtn{
+    transition: all 0.2s ease-in-out 0.2s ;
+    border-color: white;
     cursor: pointer;
     color: white;
-    background-color: #000000;
+    background-color: #001d3d;
     font-size: 2vw;
     border-radius: 25%; 
     bottom: 3vh;
@@ -96,9 +105,11 @@
     right: 3vw;
 }
 .hero #PrevBtn{
+    transition: all 0.2s ease-in-out 0.2s ;
+    border-color: white;
     cursor: pointer;
     color: white;
-    background-color: #000000;
+    background-color: #001d3d;
     font-size: 2vw;
     border-radius: 25%;
     bottom: 12vh;
@@ -107,10 +118,15 @@
     width: 4vw;
     right: 3vw;
 }
+
 #PrevBtn:hover{
+    background-color: #003566;
+    color: white; 
     transform: scale(1.05);
 }
 #ForwBtn:hover{
+    background-color: #003566;
+    color: white; 
     transform: scale(1.05);
 }
 #TopAnime{
@@ -176,7 +192,7 @@ h2{
 }
 
 .anime-card {
-  background-color: #1e1e1e;
+  background-color: #001d3d;
   border-radius: 10px;
   overflow: hidden;
   color: white;
@@ -205,13 +221,18 @@ h2{
     justify-content: center;
 }
 #loadMore{
+    border-radius: 25px;
+    color: white;
+    border-color: white;
+    background-color: #001d3d;
     height: 30px;
-    width: 75px;
+    width: 80px;
+    transition: all 0.2s ease-in-out 0.2s ;
 }
 #loadMore:hover{
     transform: scale(1.15);
-    background-color: black;
-    color: white;
+    background-color: #003566;
+    color: white;  
 }
 #Genres {
   cursor: pointer;
@@ -224,4 +245,84 @@ h2{
 }
 #Random{
       cursor: pointer;
+}
+#love{
+      transition: all 0.2s ease-in-out 0.2s ;
+}
+#love:hover{
+    transform: scale(1.2);
+}
+.SearchMore{
+    display:flex;
+    justify-content: center;
+}
+#Search_More_Btn{
+    border-radius: 25px;
+    color: white;
+    border-color: white;
+    background-color: #001d3d;
+    height: 30px;
+    width: 80px;
+    transition: all 0.2s ease-in-out 0.2s ;
+}
+#Search_More_Btn:hover{
+    transform: scale(1.15);
+    background-color: #003566;
+    color: white;  
+}
+#SearchResult{
+    margin-top: 25px;
+    font-family: Poppins,Arial;
+    top: 25px;
+    margin-left: 25px;
+}
+.GenreMoreBtn{
+    display:flex;
+    justify-content: center;
+}
+#Genre_moreBtn{
+    border-radius: 25px;
+    color: white;
+    border-color: white;
+    background-color: #001d3d;
+    height: 30px;
+    width: 80px;
+    transition: all 0.2s ease-in-out 0.2s ;
+}
+#Genre_moreBtn:hover{
+    transform: scale(1.15);
+    background-color: #003566;
+    color: white;  
+}
+.Filter{
+    font-size: 25px;
+    color: white;
+    margin-top: 25px;
+    font-family: Poppins,Arial;
+    top: 25px;
+    margin-left: 25px;
+}
+.GenreContainer{
+    flex-direction: column;
+    margin: 20px 20px 20px 20px;
+    display: flex;
+    background-color: #1d3557;
+    border-radius: 15px;
+}
+.genre-btn{
+    cursor: pointer;
+    margin: 20px 20px 20px 20px;
+    height: 34px;
+    width: 70px;
+    font-family: Poppins,Arial;
+    background-color: #1d3557;
+    color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+}
+.GenreFlex{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-between;
 }

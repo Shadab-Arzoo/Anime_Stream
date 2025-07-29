@@ -18,14 +18,13 @@
             <p class="header-tab" id="home">Home</p>
             <p class="header-tab" id="Genres">Genres</p>
             <p class="header-tab" id="Random"><i class="fa-solid fa-shuffle fa-fade" style="color: #ffffff;"></i>Random</p>
-            <a href="none" class="header-tab">Community</a>
             </div>
             <input type="search" placeholder="  Search..." id="Search-Bar" ></input>
             <button id="Search"><a><i class="fa-solid fa-magnifying-glass fa-fade"></i></a></button>
             <button id="LightMode">       
               <span class="text light">&#x2600;</span>
               <span class="text dark">&#9789;</span>
-            </button>&#x263D;
+            </button>
           </div>
         </div>
     </header>
@@ -49,11 +48,13 @@
       </Section>
       <!-- Search view -->
     <section id="search-view" class="hidden" style="display: none";>
-      <h2>Search Results</h2>
+      <h2 id="SearchResult">Search Results</h2>
       <div id="search-results" class="anime-grid">
         <!-- JS will inject results here -->
       </div>
+      <div class="SearchMore">
        <button id="Search_More_Btn">Load More</button>
+      </div>
     </section>
 
     <!-- ANIME DETAIL VIEW -->
@@ -69,8 +70,11 @@
       </div>
     </section>
     <!-- Genres -->
-     <p>Results</p>
+   
      <section id="Genres_Section" style="display: none;">
+      <div class="GenreContainer">
+      <p class="Filter">Filter</p>
+      <div class="GenreFlex">
       <button class="genre-btn" data-genre="1">Action</button>
       <button class="genre-btn" data-genre="2">Adventure</button>
       <button class="genre-btn" data-genre="46">Award Winning</button>
@@ -78,8 +82,12 @@
       <button class="genre-btn" data-genre="76">Survival</button>
       <button class="genre-btn" data-genre="29">Space</button>
       <button class="genre-btn" data-genre="12">Fantasy</button>
+      </div>
+      </div>
      </section>
+     <div class="GenreMoreBtn">
      <button id="Genre_moreBtn" style="display: none;">Load More</button>
+     </div>
     <!-- footer -->
       <footer>
         <div class="footer">
@@ -91,9 +99,9 @@
     <div class="footer-divider"></div>
     <div class="links">
         <h3>Follow Us</h3>
-        <a href="null" id="social-media"><i class="fa-brands fa-square-instagram fa-spin"></i>Instagram</a>
+        <a href="null" id="social-media"><i class="fa-brands fa-instagram fa-spin"></i>Instagram</a>
         <br>
-        <a href="null" id="social-media"><i class="fa-brands fa-square-x-twitter fa-spin"></i>X</a>
+        <a href="null" id="social-media"><i class="fa-brands fa-x-twitter fa-spin"></i></i>X</a>
         <br>
         <a href="null" id="social-media"><i class="fa-brands fa-youtube fa-spin"></i>Youtube</a>
         <br>   
