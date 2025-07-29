@@ -144,10 +144,16 @@ Search_Bar.addEventListener("keydown", (e) => {
 const Body = document.querySelector("body")
 let isLightMode = false;
 function ChangeMode(){
+    const sun = document.querySelector(".text.light");
+    const moon = document.querySelector(".text.dark");
     if(isLightMode == false){
+    sun.style.opacity = "1";
+    moon.style.opacity = "0";
     Body.style.backgroundColor = "white";
     isLightMode = true;
     }else{
+    moon.style.opacity = "1";
+    sun.style.opacity = "0";
     Body.style.backgroundColor = "black";
     isLightMode = false;
     }

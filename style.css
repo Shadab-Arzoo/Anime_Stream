@@ -37,6 +37,9 @@
     border-radius: 50%;
     margin-right: 40px;
 }
+#Search:hover{
+    transform: scale(1.2);
+}
 #LightMode{
     margin-right: 2vw;
     margin-top: 4vh;
@@ -64,11 +67,13 @@
     width: 100vw;
 }
 .hero #Img3{
+    object-fit: cover;
     display:none;
     height: 78vh;
     width: 100vw;
 }
 .hero #Img4{
+    object-fit: cover;
     display:none;
     height: 78vh;
     width: 100vw;
@@ -108,7 +113,12 @@
 #ForwBtn:hover{
     transform: scale(1.05);
 }
-
+#TopAnime{
+    margin-top: 25px;
+    font-family: Poppins,Arial;
+    top: 25px;
+    margin-left: 25px;
+}
 
 #social-media{
      color: black;
@@ -189,6 +199,19 @@ h2{
 .anime-card h3 {
   padding: 10px;
   font-size: 1rem;
+}
+.BtnFlex{
+    display:flex;
+    justify-content: center;
+}
+#loadMore{
+    height: 30px;
+    width: 75px;
+}
+#loadMore:hover{
+    transform: scale(1.15);
+    background-color: black;
+    color: white;
 }
 #Genres {
   cursor: pointer;
