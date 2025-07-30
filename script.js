@@ -73,8 +73,8 @@ function ShowAnimeDetails(anime){
             console.log(data);
             data.forEach(episode=>{
                 const ep = document.createElement("div");
-                ep.innerHTML = `<h3>Episode ${episode.mal_id} : ${episode.title || "Untitled"}</h3>
-                <h3>Score : ${episode.score}</h3>`
+                ep.innerHTML = `<h3 id="ep-name">Episode ${episode.mal_id} : ${episode.title || "Untitled"}</h3>
+                <h3 id="ep-score">Score : ${episode.score}</h3>`
                 episode_list.append(ep);
             })
         } catch (error) {
@@ -86,8 +86,9 @@ function ShowAnimeDetails(anime){
     if(anime.trailer && anime.trailer.embed_url){
         anime_player.src = anime.trailer.embed_url;
         anime_player.style.display = "block";
+        document.querySelector('.video').style.display = "block"; 
     }else{
-        querySelector("iframe").style.display = "none";
+        document.querySelector(".video").style.display = "none";
         anime_player.style.display = "none";
     }
 }
@@ -117,7 +118,7 @@ const search = async () => {
     const data = await response.json();
     const result = data.data;
     if (result.length === 0) {
-  Search_Results.innerHTML = "<p>No results found. Try a different anime name 👀</p>";
+  Search_Results.innerHTML = `<p id="NoResult" >No results found. Try a different anime name 👀</p>`;
   return;
 }
     console.log("Searching Resulttt");
@@ -148,11 +149,67 @@ function ChangeMode(){
     const sun = document.querySelector(".text.light");
     const moon = document.querySelector(".text.dark");
     if(isLightMode == false){
+    document.querySelector(".footer-divider").style.backgroundColor = "black";
+    document.querySelector(".header").style.backgroundColor= "#c8b6ff";
+    document.querySelector("#ForwBtn").style.color= "black";
+    document.querySelector("#PrevBtn").style.color= "black";
+    document.querySelector("#ForwBtn").style.backgroundColor= "#c8b6ff";
+    document.querySelector("#PrevBtn").style.backgroundColor= "#c8b6ff";
+    document.querySelector("#ForwBtn").style.borderColor= "black";
+    document.querySelector("#PrevBtn").style.borderColor= "black";
+    document.querySelector("#loadMore").style.backgroundColor= "#c8b6ff";
+    document.querySelector(".anime-card").style.backgroundColor= "#c8b6ff";
+    document.querySelectorAll(".header-tab").forEach(tab => {
+    tab.style.color = "black";
+    document.querySelector(".fa-solid ").style.color = "black"
+    document.querySelector("#thanks").style.color = "black"
+    document.querySelector("h2").style.color = "black";
+    document.querySelector("#love").style.color = "black";
+    document.querySelectorAll("h3").forEach(tab => {
+    tab.style.color = "black";
+    })
+    document.querySelectorAll(".fa-brands").forEach(tab => {
+    tab.style.color = "black";
+    })
+    document.querySelectorAll("#social-media").forEach(tab => {
+    tab.style.color = "black";
+    })
+
+
+    });
+
     sun.style.opacity = "1";
     moon.style.opacity = "0";
-    Body.style.backgroundColor = "white";
+    Body.style.backgroundColor = "#ffd6ff";
     isLightMode = true;
     }else{
+    document.querySelector("#loadMore").style.backgroundColor= "#001d3d";
+    document.querySelector(".anime-card").style.backgroundColor= "#001d3d";
+    document.querySelector("#ForwBtn").style.borderColor= "white";
+    document.querySelector("#PrevBtn").style.borderColor= "white";
+    document.querySelector("#ForwBtn").style.backgroundColor= "#001d3d";
+    document.querySelector("#PrevBtn").style.backgroundColor= "#001d3d";
+    document.querySelector("#ForwBtn").style.color= "white";
+    document.querySelector("#PrevBtn").style.color= "white";   
+    document.querySelector("#love").style.color = "white";
+    document.querySelector(".footer-divider").style.backgroundColor = "white";
+    document.querySelector(".header").style.backgroundColor= "#001d3d";
+    document.querySelectorAll(".header-tab").forEach(tab => {
+    tab.style.color = "white";
+    });
+    document.querySelector("h2").style.color = "white";
+    document.querySelectorAll("h3").forEach(tab => {
+    tab.style.color = "white";
+    })
+    document.querySelector(".fa-solid ").style.color = "white"
+    document.querySelector("#thanks").style.color = "white"
+    document.querySelector(".fa-brands").style.color = "white";
+    document.querySelectorAll("#social-media").forEach(tab => {
+    tab.style.color = "white";
+    document.querySelectorAll(".fa-brands").forEach(tab => {
+    tab.style.color = "white";
+    })
+    });
     moon.style.opacity = "1";
     sun.style.opacity = "0";
     Body.style.backgroundColor = "black";
