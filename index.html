@@ -17,10 +17,10 @@
             <div class="Header-tabs">
             <p class="header-tab" id="home">Home</p>
             <p class="header-tab" id="Genres">Genres</p>
-            <p class="header-tab" id="Random"><i class="fa-solid fa-shuffle fa-fade" style="color: #ffffff;"></i>Random</p>
+            <p class="header-tab" id="Random"><i class="fa-solid fa-shuffle" style="color: #ffffff;"></i>Random</p>
             </div>
             <input type="search" placeholder="  Search..." id="Search-Bar" ></input>
-            <button id="Search"><a><i class="fa-solid fa-magnifying-glass fa-fade"></i></a></button>
+            <button id="Search"><a><i class="fa-solid fa-magnifying-glass"></i></a></button>
             <button id="LightMode">       
               <span class="text light">&#x2600;</span>
               <span class="text dark">&#9789;</span>
@@ -59,29 +59,29 @@
 
     <!-- ANIME DETAIL VIEW -->
     <section id="anime-detail-view" class="hidden" style="display: none;">
+      <div class="back-btn-flex">
       <button id="back-btn">⬅️ Back</button>
+      </div>
+      <div class="detailFlex">
       <h2 id="anime-title">Anime Title</h2>
       <img id="anime-cover" src="" alt="Anime Cover" />
+      <div class="video">
+      </div>
+      <div class="para">
       <p id="anime-description">Description here...</p>
+      </div>
+      <div class="episode_list">
       <div id="episode-list">
+        </div>
         <!-- JS will inject episode list -->
       </div>
-      <div class="video">
       </div>
     </section>
     <!-- Genres -->
-   
      <section id="Genres_Section" style="display: none;">
       <div class="GenreContainer">
       <p class="Filter">Filter</p>
       <div class="GenreFlex">
-      <button class="genre-btn" data-genre="1">Action</button>
-      <button class="genre-btn" data-genre="2">Adventure</button>
-      <button class="genre-btn" data-genre="46">Award Winning</button>
-      <button class="genre-btn" data-genre="27">Shonen</button>
-      <button class="genre-btn" data-genre="76">Survival</button>
-      <button class="genre-btn" data-genre="29">Space</button>
-      <button class="genre-btn" data-genre="12">Fantasy</button>
       </div>
       </div>
      </section>

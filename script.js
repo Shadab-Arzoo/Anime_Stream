@@ -87,6 +87,7 @@ function ShowAnimeDetails(anime){
         anime_player.src = anime.trailer.embed_url;
         anime_player.style.display = "block";
     }else{
+        querySelector("iframe").style.display = "none";
         anime_player.style.display = "none";
     }
 }
@@ -169,16 +170,19 @@ Genres.addEventListener("click",()=>{
     document.querySelector("#search-view").style.display = "none";
     document.querySelector(".home-view").style.display = "none";
 })
-const genre_btn = document.querySelectorAll(".genre-btn");
-genre_btn.forEach(button=>{
-button.addEventListener("click",()=>{
-    genreResultsContainer.innerHTML ="";
-Genre_moreBtn.style.display = "block";
-const Genres_Result = async () =>{
+const GenreBtnDiv = document.querySelector(".GenreFlex");
+const GenreBox = async ()=>{
+   try {
+    const response = await fetch(`https://api.jikan.moe/v4/genres/anime`);
+    const data = await response.json();
+    const GenreList = data.data;
+        let currentGenreId = null;
+    const Genres_Result = async (genreId) =>{
     try {
-        const response = await fetch(`https://api.jikan.moe/v4/anime?genres=${button.dataset.genre}&limit=7&page=${GenrePage}`)
+       const response = await fetch(`https://api.jikan.moe/v4/anime?genres=${genreId}&limit=7&page=${GenrePage}`)
         const data = await response.json();
         const Genre_data = data.data;
+         if (GenrePage === 1) genreResultsContainer.innerHTML = ""; 
         Genre_data.forEach(Genres_Result_I => {
         const Genre_Card = document.createElement("div");
         Genre_Card.classList.add("anime-card");
@@ -193,14 +197,36 @@ const Genres_Result = async () =>{
     } catch (error) {
         console.log("Show it why wont u work")
     }
+ 
 }
-Genres_Result();
-Genre_moreBtn.addEventListener("click",()=>{
+    for(let i =0;i<GenreList.length;i++){
+    const anime = GenreList[i];
+    const GenreBtn = document.createElement("button");
+    GenreBtn.dataset.genre = anime.mal_id;
+    GenreBtn.innerText = anime.name;
+    GenreBtn.classList.add("genre-btn");
+    GenreBtnDiv.appendChild(GenreBtn);
+    GenreBtn.addEventListener("click",()=>{
+    document.querySelector(".GenreContainer").style.display ="none";
+    genreResultsContainer.innerHTML ="";
+    Genre_moreBtn.style.display = "block";
+    GenrePage = 1;
+     currentGenreId = anime.mal_id;
+         genreResultsContainer.innerHTML = "";
+        Genres_Result(currentGenreId);
+          Genre_moreBtn.onclick = () => {
     GenrePage++;
-    Genres_Result();
+    Genres_Result(currentGenreId);
+  };
 })
-})
-})
+}
+
+   } catch (error) {
+   console.log("Could Load data");
+   }
+}
+GenreBox();
+
 Home.forEach(search=>{
 search.addEventListener("click",()=>{
     document.querySelector(".hero").style.display = "block";
